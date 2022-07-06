@@ -1,3 +1,46 @@
 * {
-    display: block;
+    font-family: 'Cinzel', serif;
+    --primary-color: #4b9cd3;
+    --accent-color: #13294B;
+    box-sizing: 0;
+}
+
+body {
+    background-color: lightgray;
+}
+
+header {
+    background-color: var(--accent-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    margin: 1%;
+}
+
+
+.content {
+    padding: 1%;
+    border-radius: 10px;
+}
+
+#searchButton {
+    background-color: var(--accent-color);
+}
+
+#searchBox {
+    margin-left: 1%;
+    background-color: var(--primary-color);
+}
+
+#recentCities h2 {
+    color: black;
+}
+
+#weatherBox {
+    background-color: white;
+}
+
+hr {
+    border-style: solid;
 }
