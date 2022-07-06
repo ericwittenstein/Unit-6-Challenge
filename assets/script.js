@@ -32,8 +32,6 @@ buttonEl.on('click', function (event) {
     $("#displayCity").replaceWith('<h3 id="displayCity">' + searchedCityNameEl + '</h3>');
 });
 
-// openweather api key: b0572ae39a1b4f96f4d79c380369edb3
-
 // function to call the API using the requested city
 function getTodayWeather() {
     var callWeather = 'https://api.openweathermap.org/data/2.5/weather?q=' + localStorage.getItem('new city') + '&units=imperial&appid=b0572ae39a1b4f96f4d79c380369edb3';
