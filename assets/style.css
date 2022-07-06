@@ -18,7 +18,6 @@ header {
     margin: 1%;
 }
 
-
 .content {
     padding: 1%;
     border-radius: 10px;
@@ -28,12 +27,16 @@ header {
     background-color: var(--accent-color);
 }
 
+#searchBar {
+    padding: 1%;
+}
+
 #searchBox {
     margin-left: 1%;
     background-color: var(--primary-color);
 }
 
-#recentCities h2 {
+#recentCities {
     color: black;
 }
 
@@ -43,4 +46,34 @@ header {
 
 hr {
     border-style: solid;
+}
+
+#weatherToday {
+    font-size: large;
+}
+
+#weatherToday h6 {
+    font-size: small;
+}
+
+.greenUV {
+    background-color: green;
+    color: white;
+}
+
+.yellowUV {
+    background-color: yellow;
+}
+
+.redUV {
+    background-color: red;
+    color: white;
+}
+
+.savedCities {
+    background-color: white;
+}
+
+card div {
+    font-size: smaller;
 }
