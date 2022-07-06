@@ -70,6 +70,10 @@ hr {
     color: white;
 }
 
+#currentUVIndex {
+    margin: 1%;
+}
+
 .savedCities {
     background-color: white;
 }
