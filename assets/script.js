@@ -6,7 +6,7 @@ var todayTemp = $('#currentTemp');
 var todayWind = $('#currentWind');
 var todayHumid = $('#currentHumid');
 var todayUV = $('#currentUVIndex');
-var todayIcon = $('#currentIcon');
+// var todayIcon = $('#currentIcon');
 var CityEl = $('#displayCity');
 
 // use moment to set current date and 5 days ahead
@@ -32,7 +32,7 @@ function getTodayCoords(cityName) {
             // set main city name display
             var todayCityVal = data['name'];
             CityEl.replaceWith('<h3 id="displayCity">' + todayCityVal.toUpperCase() + '</h3>');
-            
+
             console.log('initial pull for latlong', data);
             var latVal = data['coord']['lat'];
             var lonVal = data['coord']['lon'];
@@ -54,20 +54,23 @@ function getWeatherWithCoords(lat, lon) {
 
             // set icon display
             var todayIconVal = data['current']['weather']['0']['icon'];
-            var todayIconURL = 'http://openweathermap.org/img/wn/' + todayIconVal + '@2x.png';
-            todayIcon.append('<img src="' + todayIconURL + '" />');
+            var todayIconURL1 = 'http://openweathermap.org/img/wn/';
+            var todayIconURL2 = todayIconVal;
+            var todayIconURL3 = '@2x.png';
+            var todayIconURL = todayIconURL1 + todayIconURL2 + todayIconURL3;
+            $('#currentIcon').append('<img src="' + todayIconURL + '" />');
 
             // set main temp display
             var todayTempVal = data['current']['temp'];
-            todayTemp.append(todayTempVal + " °F");
+            todayTemp.text("Temperature:  " + todayTempVal + " °F");
 
             // set main wind speed display
             var todayWindVal = data['current']['wind_speed'];
-            todayWind.append(todayWindVal + " MPH");
+            todayWind.text("Wind Speed:  " + todayWindVal + " MPH");
 
             // set main humidity display
             var todayHumidVal = data['current']['humidity'];
-            todayHumid.append(todayHumidVal + '% (feels like ' + data['current']['feels_like'] + '°F)');
+            todayHumid.text('Humidity:  ' + todayHumidVal + '% (feels like ' + data['current']['feels_like'] + '°F)');
 
             // set main UV index value
             var todayUvVal = data['current']['uvi'];
@@ -80,7 +83,18 @@ function getWeatherWithCoords(lat, lon) {
             else if (todayUvVal > 8) {
                 todayUV.addClass("redUV");
             }
-            todayUV.append(todayUvVal);
+            todayUV.text(todayUvVal);
+
+            // for loop to move through the various days and assign their values
+            for (var i = 1; i < 6; i++) {
+            var dailyIconVal = data.daily[i].weather[0].icon;
+            var dailyIconURL1 = 'http://openweathermap.org/img/wn/';
+            var dailyIconURL2 = dailyIconVal;
+            var dailyIconURL3 = '@2x.png';
+            var dailyIconURL = dailyIconURL1 + dailyIconURL2 + dailyIconURL3;
+            var dayIcon = $(`#day${i}Icon`);
+            dayIcon.append("<img src='" + dailyIconURL + "' />");
+            }
         });
 }
 
@@ -88,7 +102,7 @@ function getWeatherWithCoords(lat, lon) {
 // function to save to local storage
 buttonEl.on('click', function (event) {
     // prevents a default
-    event.preventDefault();
+    // event.preventDefault();
     // creates a variable that pulls in the input from the search bar
     var searchedCityNameEl = $(this).siblings("input").val();
     // saves that variable to local storage

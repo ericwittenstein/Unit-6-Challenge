@@ -81,3 +81,7 @@ hr {
 card div {
     font-size: smaller;
 }
+
+card div img {
+    width: 75%;
+}
